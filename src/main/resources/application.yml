@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: "todo-api"
+  datasource:
+    url: jdbc:mysql://localhost:3307/mydb?allowPublicKeyRetrieval=true
+    username: root
+    password: juntae1111
+
+  jpa:
+    show-sql: false
