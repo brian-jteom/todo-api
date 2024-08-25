@@ -1,5 +1,6 @@
 package com.mjconnect.todoapi.config;
 
+import com.mjconnect.todoapi.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtRequestFilter jwtRequestFilter;
+
 
     //@Lazy 이렇게 하면 JwtRequestFilter 빈의 초기화를 지연시켜 순환 참조 문제를 피할 수 있습니다.
     @Autowired
@@ -68,26 +70,6 @@ public class SecurityConfig {
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        var userDetailsManager = new InMemoryUserDetailsManager();
-
-        var user = User.withUsername("user")
-                .password(passwordEncoder().encode("password"))
-                .roles("USER")
-                .build();
-
-        var admin = User.withUsername("admin")
-                .password(passwordEncoder().encode("admin"))
-                .roles("ADMIN")
-                .build();
-
-        userDetailsManager.createUser(user);
-        userDetailsManager.createUser(admin);
-
-        return userDetailsManager;
     }
 
     @Bean

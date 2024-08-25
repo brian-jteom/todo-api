@@ -1,5 +1,6 @@
 package com.mjconnect.todoapi.config;
 
+import com.mjconnect.todoapi.service.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,10 +19,10 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    private UserDetailsService userDetailsService;
+    private CustomUserDetailsService userDetailsService;
     private JwtUtil jwtUtil;
     @Autowired
-    public void setUserDetailsService(UserDetailsService userDetailsService) {
+    public void setUserDetailsService(CustomUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
 

@@ -2,6 +2,9 @@ package com.mjconnect.todoapi.controller;
 
 import com.mjconnect.todoapi.config.JwtUtil;
 import com.mjconnect.todoapi.dto.AuthRequest;
+import com.mjconnect.todoapi.dto.RegisterRequest;
+import com.mjconnect.todoapi.entity.TbUser;
+import com.mjconnect.todoapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,6 +26,9 @@ public class AuthController {
     private UserDetailsService userDetailsService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private JwtUtil jwtUtil;
 
     @PostMapping("/login")
@@ -36,4 +42,10 @@ public class AuthController {
 
         return jwt;
     }
+
+    @PostMapping("/register")
+    public TbUser registerUser(@RequestBody RegisterRequest registerRequest) {
+        return userService.registerNewUser(registerRequest);
+    }
+
 }
