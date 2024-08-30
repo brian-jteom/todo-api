@@ -6,9 +6,9 @@ spring:
   application:
     name: "todo-api"
   datasource:
-    url: jdbc:mysql://localhost:3307/mydb?allowPublicKeyRetrieval=true
-    username: root
-    password: juntae1111
+    url: jdbc:mysql://db-p0faj.pub-cdb.ntruss.com:3306/mjconnect?allowPublicKeyRetrieval=true
+    username: semyung
+    password: tpaud123$
 
   jpa:
     show-sql: false

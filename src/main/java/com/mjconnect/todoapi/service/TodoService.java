@@ -3,6 +3,8 @@ package com.mjconnect.todoapi.service;
 import com.mjconnect.todoapi.entity.Todo;
 import com.mjconnect.todoapi.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +16,8 @@ public class TodoService {
     @Autowired
     private TodoRepository todoRepository;
 
-    public List<Todo> getAllTodos() {
-        return todoRepository.findAll();
+    public Page<Todo> getAllTodos(Pageable pageable) {
+        return todoRepository.findAll(pageable);
     }
 
     public Optional<Todo> getTodoById(Long id) {
