@@ -2,11 +2,15 @@ package com.mjconnect.todoapi.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
+@ToString
 @Setter
 @Getter
 @Entity
+@NoArgsConstructor
 @Table(name = "tb_user")
 public class TbUser {
 
@@ -17,7 +21,7 @@ public class TbUser {
     @Column(unique = true, nullable = false)
     private String username;
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
     @Column(nullable = false)
